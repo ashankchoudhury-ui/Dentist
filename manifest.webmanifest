@@ -1,0 +1,9 @@
+{
+  "name": "Unmindy — Start Small",
+  "short_name": "Unmindy",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#10110f",
+  "theme_color": "#10110f",
+  "description": "A tiny nudge back to what matters."
+}
