@@ -1,91 +1,188 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0c0b"><meta name="description" content="Get out of autopilot. Find one small thing worth doing.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#171815">
+<meta name="description" content="A small, practical nudge to do something you actually want to do.">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Unmindy — Get back to your life</title>
+<title>Unmindy — One small next step</title>
 <style>
-:root{color-scheme:dark;--bg:#0b0c0b;--surface:#131512;--surface2:#1a1d17;--line:#2b3027;--text:#f0f1e9;--muted:#8e9588;--lime:#d8f879;--orange:#ff8c5a;--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100dvh}button{font:inherit;cursor:pointer}button:focus-visible{outline:2px solid var(--lime);outline-offset:3px}button:disabled{opacity:.45;cursor:default}.app{max-width:500px;min-height:100dvh;margin:auto;padding:0 19px 100px;position:relative;background:radial-gradient(ellipse at 90% -8%,rgba(216,248,121,.07),transparent 33%),var(--bg)}.topbar{height:72px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.07)}.brand{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:850;letter-spacing:-.7px}.brand-icon{height:28px;width:28px;border-radius:9px;background:var(--lime);color:#12150c;display:grid;place-items:center;font-weight:950;font-size:18px}.brand em{font-style:normal;color:var(--lime)}.streak{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:7px 10px;border-radius:99px;font-size:11px;color:#c7cbbf}.streak b{color:var(--lime);font-size:12px}.view{display:none}.view.active{display:block;animation:fade .25s ease}.eyebrow{color:var(--lime);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:850}.hero{padding:34px 0 24px}.hero h1{font-size:clamp(43px,11vw,57px);line-height:.99;letter-spacing:-3.4px;margin:13px 0 13px;font-weight:820}.hero h1 span{color:var(--lime)}.hero p{margin:0;color:#a4aa9b;max-width:330px;font-size:14px;line-height:1.65}.tiny-note{display:inline-flex;align-items:center;gap:7px;margin-top:17px;color:#737a6c;font-size:11px}.tiny-note:before{content:"";height:6px;width:6px;background:var(--orange);border-radius:50%;box-shadow:0 0 12px #ff8c5a55}.checkin{background:linear-gradient(145deg,#191d16,#121410 70%);border:1px solid #2c3325;border-radius:var(--radius);padding:19px 16px 16px;position:relative;overflow:hidden}.checkin:after{content:"";position:absolute;right:-54px;top:-72px;width:150px;height:150px;border:1px solid #343d29;border-radius:50%;box-shadow:0 0 0 18px #171b14,0 0 0 19px #343d29,0 0 0 38px #171b14,0 0 0 39px #343d29;opacity:.48;pointer-events:none}.check-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:8px}.check-head h2{font-size:19px;letter-spacing:-.7px;margin:0}.step{font-size:10px;color:#747d68;letter-spacing:1px}.sub{font-size:12px;color:var(--muted);margin:5px 0 15px;position:relative;z-index:1}.feelings{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative;z-index:1}.feel{border:1px solid #30362a;background:#10120f;color:var(--text);text-align:left;border-radius:12px;padding:12px 10px;min-height:77px;transition:.18s}.feel:hover{border-color:#626f49;transform:translateY(-1px)}.feel.selected{border-color:var(--lime);background:#242b1a;box-shadow:inset 0 0 0 1px #d8f87920}.feel .symbol{font-size:17px;display:block;margin-bottom:5px}.feel strong{font-size:12px;font-weight:750;display:block}.feel small{display:block;color:#828a79;font-size:10px;margin-top:2px}.feel.selected small{color:#b2c19a}.suggestion{display:none;margin-top:12px;border-radius:var(--radius);border:1px solid #30382a;background:var(--lime);color:#15180f;padding:18px 17px 16px;animation:rise .25s ease}.suggestion.show{display:block}.suggestion-meta{display:flex;justify-content:space-between;gap:8px;align-items:center;text-transform:uppercase;font-size:9px;letter-spacing:1.4px;font-weight:900;color:#4a5434}.suggestion h3{font-size:27px;line-height:1.04;letter-spacing:-1.3px;margin:14px 0 9px;max-width:360px}.suggestion p{font-size:13px;line-height:1.6;color:#333a25;margin:0}.suggestion-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.btn{border:1px solid transparent;background:var(--text);color:#11130f;border-radius:10px;padding:11px 14px;font-size:12px;font-weight:850;transition:transform .15s,opacity .15s}.btn:active{transform:scale(.98)}.btn.dark{background:#171a13;color:var(--lime)}.btn.ghost{background:transparent;color:inherit;border-color:#a5b76e80}.btn.outline{background:transparent;color:var(--text);border-color:var(--line)}.section-head{display:flex;justify-content:space-between;align-items:baseline;margin:28px 0 12px}.section-head h2{font-size:18px;letter-spacing:-.6px;margin:0}.section-head button{border:0;background:transparent;color:var(--lime);font-size:11px;font-weight:800}.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.category{padding:14px 8px 12px;background:var(--surface);border:1px solid var(--line);border-radius:13px;text-align:left;color:var(--text);min-width:0}.category .ico{font-size:20px;display:block;margin-bottom:10px}.category strong{display:block;font-size:11px}.category small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.category.active{border-color:var(--lime);background:#1c2315}.mode-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}.mode{background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:11px;padding:10px 7px;text-align:center;font-size:10px;font-weight:800}.mode.active{border-color:#82984d;color:var(--lime);background:#1a2113}.mode span{display:block;font-size:16px;margin-bottom:5px}.timer-panel{display:none;margin-top:12px;padding:20px 15px;background:#11130f;border:1px solid var(--line);border-radius:var(--radius);text-align:center}.timer-panel.show{display:block}.timer-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}.clock{font-size:69px;line-height:1.2;letter-spacing:-4px;font-weight:800;font-variant-numeric:tabular-nums;margin:6px 0 5px}.timer-caption{font-size:12px;color:var(--muted);margin:0 0 16px}.timer-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.timer-actions .btn{min-width:90px}.progress-track{height:3px;background:#2c3126;border-radius:9px;overflow:hidden;margin:14px auto 0;max-width:300px}.progress-track div{height:100%;width:0;background:var(--lime);transition:width .2s}.privacy-note{display:flex;gap:10px;align-items:center;margin-top:23px;padding:13px 0;border-top:1px solid rgba(255,255,255,.06);color:#70776b;font-size:10px}.privacy-note b{color:#aeb6a5;font-weight:700}.bottom-nav{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(500px,100%);padding:10px 15px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(12,13,11,.94);backdrop-filter:blur(18px);border-top:1px solid #2a2d25}.nav-item{border:0;background:transparent;color:#70776b;border-radius:10px;padding:7px 4px;font-size:10px;font-weight:750}.nav-item span{display:block;font-size:17px;margin-bottom:2px}.nav-item.active{color:var(--lime);background:#1a2013}.page-title{font-size:36px;letter-spacing:-2px;line-height:1.05;margin:27px 0 8px}.page-intro{color:var(--muted);font-size:13px;margin:0 0 22px}.activity-list{display:grid;gap:9px}.activity-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px;display:flex;gap:12px;align-items:flex-start}.activity-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--surface2);font-size:19px;flex-shrink:0}.activity-item h3{font-size:14px;margin:0 0 4px;letter-spacing:-.3px}.activity-item p{font-size:11px;color:var(--muted);margin:0;line-height:1.55}.activity-item .mini-action{margin-top:9px;background:transparent;border:0;color:var(--lime);padding:0;font-size:11px;font-weight:800}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat-card{border:1px solid var(--line);background:var(--surface);border-radius:15px;padding:18px}.stat-card strong{font-size:31px;letter-spacing:-1px;display:block}.stat-card small{font-size:11px;color:var(--muted)}.quote{padding:20px;border-left:2px solid var(--lime);background:var(--surface);color:#c7cbbf;font:italic 17px/1.5 Georgia,serif;margin-top:15px}.reset-data{background:transparent;border:0;color:#777d70;text-decoration:underline;text-underline-offset:3px;font-size:11px;padding:20px 0}.empty{padding:20px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:12px;text-align:center}.toast{position:fixed;z-index:10;bottom:88px;left:50%;transform:translateX(-50%);background:var(--lime);color:#14170d;padding:11px 15px;border-radius:10px;font-size:12px;font-weight:850;box-shadow:0 8px 30px #0008;max-width:90vw;text-align:center}@keyframes fade{from{opacity:.4}to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@media(min-width:650px){body{padding:20px 0}.app{min-height:calc(100dvh - 40px);border:1px solid #20231d;border-radius:25px;overflow:hidden}.bottom-nav{bottom:20px;border-radius:0 0 25px 25px}.hero{padding-top:42px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+:root{color-scheme:dark;--bg:#171815;--panel:#20211d;--panel2:#292b25;--line:#3a3c34;--text:#f1f0e8;--muted:#b1b2a6;--soft:#85877c;--accent:#d7ed8b;--ink:#202217;--radius:15px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+button:disabled{opacity:.45;cursor:default}
+.app{max-width:520px;min-height:100dvh;margin:auto;padding:0 18px calc(94px + env(safe-area-inset-bottom))}
+header{height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;font-size:17px;letter-spacing:-.5px}.brand span{color:var(--accent)}
+.header-count{font-size:12px;color:var(--muted)}
+.view{display:none}.view.active{display:block}
+.intro{padding:28px 0 20px}
+.kicker{font-size:11px;color:var(--accent);font-weight:750;letter-spacing:.7px}
+h1{font-size:35px;line-height:1.08;letter-spacing:-1.6px;margin:8px 0 10px;font-weight:760}
+.intro p,.lead{color:var(--muted);font-size:14px;line-height:1.6;margin:0;max-width:430px}
+.step-card{border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:17px;margin-bottom:13px}
+.step-heading{display:flex;gap:11px;align-items:flex-start;margin-bottom:13px}
+.step-number{flex:none;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--ink);font-weight:850;font-size:12px}
+.step-heading h2{font-size:16px;letter-spacing:-.3px;margin:1px 0 3px}
+.step-heading p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}
+.feelings{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice{min-height:72px;text-align:left;padding:11px;border:1px solid var(--line);border-radius:11px;background:#191a17;color:var(--text)}
+.choice strong{display:block;font-size:12px;line-height:1.35}
+.choice small{display:block;color:var(--muted);font-size:11px;margin-top:5px;line-height:1.35}
+.choice.selected{border-color:var(--accent);background:#303425}
+.idea{display:none;border:1px solid #697548;background:#272d1e;border-radius:var(--radius);padding:17px;margin-bottom:13px}
+.idea.show{display:block}
+.idea-label{font-size:10px;color:var(--accent);font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+.idea h3{font-size:22px;line-height:1.2;letter-spacing:-.7px;margin:9px 0}
+.idea p{font-size:13px;color:#d0d2c4;line-height:1.6;margin:0}
+.idea-meta{font-size:12px;color:var(--accent);margin-top:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.btn{border:1px solid var(--line);border-radius:10px;padding:11px 14px;background:transparent;color:var(--text);font-size:12px;font-weight:750}
+.btn.primary{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.btn:active,.choice:active,.category:active{transform:scale(.99)}
+.timer{display:none;border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:18px;margin-bottom:14px;text-align:center}
+.timer.show{display:block}
+.timer h2{font-size:16px;margin:0}.timer p{font-size:12px;color:var(--muted);margin:5px 0 12px}
+.clock{font-size:56px;font-weight:750;letter-spacing:-2px;font-variant-numeric:tabular-nums;line-height:1.25;margin:9px 0}
+.timer-help{font-size:11px;color:var(--soft);margin-top:12px}
+.section-title{font-size:16px;margin:25px 0 5px;letter-spacing:-.3px}
+.section-help{font-size:12px;color:var(--muted);margin:0 0 12px}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.category{display:flex;align-items:center;gap:11px;text-align:left;padding:13px 11px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:12px}
+.category .icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--panel2);font-size:16px;flex:none}
+.category strong{display:block;font-size:12px}.category small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.category.active{border-color:var(--accent)}
+.mode-list{display:grid;gap:7px}
+.mode{display:flex;gap:10px;align-items:flex-start;text-align:left;background:transparent;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text)}
+.mode.active{border-color:var(--accent);background:#25291e}
+.radio{width:16px;height:16px;border:1px solid var(--soft);border-radius:50%;flex:none;margin-top:2px}
+.mode.active .radio{border:5px solid var(--accent)}
+.mode strong{display:block;font-size:12px}.mode small{display:block;color:var(--muted);font-size:11px;margin-top:2px;line-height:1.45}
+.note{border-top:1px solid var(--line);padding:14px 0;margin-top:22px;color:var(--soft);font-size:11px;line-height:1.6}
+.nav{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#171815f5;border-top:1px solid var(--line)}
+.nav button{border:0;background:transparent;color:var(--muted);padding:7px 4px;border-radius:9px;font-size:11px;font-weight:700}
+.nav button.active{color:var(--accent);background:#2a2d23}
+.page-title{margin-top:28px}
+.filters{display:flex;gap:7px;overflow-x:auto;padding:3px 0 13px;scrollbar-width:none}.filters button{white-space:nowrap;border:1px solid var(--line);background:transparent;color:var(--muted);padding:7px 11px;border-radius:99px;font-size:11px}.filters button.active{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.activity-list{display:grid;gap:9px}
+.activity{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px}
+.activity-top{display:flex;gap:10px;align-items:flex-start}
+.activity-icon{width:36px;height:36px;border-radius:10px;background:var(--panel2);display:grid;place-items:center;flex:none}
+.activity h3{font-size:14px;line-height:1.35;margin:1px 0 5px}.activity p{font-size:12px;color:var(--muted);line-height:1.55;margin:0}
+.activity-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px}.duration{font-size:11px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px}
+.stat{padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:13px}
+.stat strong{display:block;font-size:27px;letter-spacing:-1px}.stat small{font-size:11px;color:var(--muted)}
+.progress-copy{background:var(--panel);border-left:3px solid var(--accent);padding:15px;margin-top:13px;font-size:13px;line-height:1.6;color:#d7d8cd}
+.reset{border:0;background:transparent;color:var(--muted);font-size:11px;text-decoration:underline;padding:20px 0}
+.toast{position:fixed;z-index:10;bottom:90px;left:50%;transform:translateX(-50%);max-width:90vw;background:var(--accent);color:var(--ink);padding:11px 15px;border-radius:10px;font-size:12px;font-weight:750;text-align:center;box-shadow:0 6px 24px #0005}
+@media(min-width:650px){body{padding:20px 0}.app{min-height:calc(100dvh - 40px);border:1px solid var(--line);border-radius:20px;overflow:hidden}.nav{bottom:20px;border-radius:0 0 20px 20px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
-<body><main class="app">
-<header class="topbar"><div class="brand"><span class="brand-icon">u.</span>unmindy<em>•</em></div><div class="streak">✦ <b id="xp">0 XP</b> <span>·</span> <span id="streak">0 day streak</span></div></header>
+<body>
+<main class="app">
+<header><div class="brand">unmindy<span>.</span></div><div class="header-count" id="header-count">0 things tried</div></header>
 <section class="view active" id="home">
-<div class="hero"><div class="eyebrow">Less autopilot. More you.</div><h1>Come back<br>to <span>yourself.</span></h1><p>No guilt. No productivity lecture. Just a small nudge toward something you actually want to do.</p><div class="tiny-note">This moment is a fresh start.</div></div>
-<div class="checkin"><div class="check-head"><h2>What's going on right now?</h2><span class="step">01 / CHECK IN</span></div><p class="sub">Pick the closest answer. Don't overthink it.</p>
+<div class="intro"><div class="kicker">A SMALL RESET</div><h1>What would feel<br>good to do next?</h1><p>This isn't a productivity challenge. Pick how you're feeling and I'll suggest one real thing you can do in a few minutes.</p></div>
+<div class="step-card">
+<div class="step-heading"><span class="step-number">1</span><div><h2>Choose what feels closest</h2><p>There are no wrong answers. Just pick one.</p></div></div>
 <div class="feelings">
-<button class="feel" data-feel="avoid"><span class="symbol">〰</span><strong>I'm avoiding something</strong><small>Help me get started</small></button>
-<button class="feel" data-feel="restless"><span class="symbol">↗</span><strong>I'm restless</strong><small>I need a reset</small></button>
-<button class="feel" data-feel="curious"><span class="symbol">✳</span><strong>I want a little spark</strong><small>Give me something good</small></button>
-<button class="feel" data-feel="habit"><span class="symbol">◌</span><strong>Just scrolling again</strong><small>Help me switch gears</small></button>
-</div></div>
-<div class="suggestion" id="suggestion" aria-live="polite"><div class="suggestion-meta"><span id="suggestion-label">YOUR NEXT MOVE</span><span id="suggestion-time">2 MIN</span></div><h3 id="suggestion-title"></h3><p id="suggestion-desc"></p><div class="suggestion-actions"><button class="btn dark" id="start-activity">Let's do it ↗</button><button class="btn ghost" id="another">Try another ↻</button></div></div>
-<div class="timer-panel" id="timer-panel"><div class="timer-label">One thing. Right now.</div><div class="clock" id="clock">02:00</div><p class="timer-caption" id="timer-caption">You only need to begin. That's the whole assignment.</p><div class="timer-actions"><button class="btn" id="timer-toggle">Start timer</button><button class="btn outline" id="timer-reset">Reset</button><button class="btn outline" id="finish">I'm done ✓</button></div><div class="progress-track"><div id="timer-progress"></div></div></div>
-<div class="section-head"><h2>Or pick your own direction</h2><button id="surprise">Surprise me ↗</button></div>
-<div class="categories" id="home-categories">
-<button class="category" data-cat="create"><span class="ico">✳</span><strong>Create</strong><small>Make something</small></button><button class="category" data-cat="move"><span class="ico">↗</span><strong>Move</strong><small>Shift your energy</small></button><button class="category" data-cat="learn"><span class="ico">⌘</span><strong>Learn</strong><small>Follow curiosity</small></button><button class="category" data-cat="calm"><span class="ico">☾</span><strong>Unwind</strong><small>Find some quiet</small></button><button class="category" data-cat="focus"><span class="ico">◎</span><strong>Get it done</strong><small>One small task</small></button><button class="category" data-cat="fun"><span class="ico">⌁</span><strong>Have fun</strong><small>Enjoy your time</small></button>
+<button class="choice" data-feel="avoid"><strong>I'm putting something off</strong><small>Help me make a start</small></button>
+<button class="choice" data-feel="restless"><strong>I feel restless</strong><small>I need to switch gears</small></button>
+<button class="choice" data-feel="curious"><strong>I want to do something fun</strong><small>Give me an idea</small></button>
+<button class="choice" data-feel="habit"><strong>I'm stuck scrolling</strong><small>Help me take a break</small></button>
 </div>
-<div class="section-head"><h2>Your nudge style</h2><span class="step">MAKE IT YOURS</span></div><div class="mode-row"><button class="mode active" data-mode="gentle"><span>🌱</span>Gentle</button><button class="mode" data-mode="firm"><span>⚡</span>Firm</button><button class="mode" data-mode="focus"><span>◎</span>Focus mode</button></div>
-<div class="privacy-note"><span>◈</span><span><b>Your progress stays on this device.</b><br>No account. No public leaderboard. Just you.</span></div>
+</div>
+<div class="idea" id="idea" aria-live="polite">
+<div class="idea-label" id="idea-label">YOUR IDEA</div><h3 id="idea-title"></h3><p id="idea-desc"></p><div class="idea-meta" id="idea-meta"></div>
+<div class="actions"><button class="btn primary" id="use-idea">Try this now</button><button class="btn" id="change-idea">Give me another idea</button></div>
+</div>
+<div class="timer" id="timer">
+<h2 id="timer-title">Just start. That's enough.</h2><p id="timer-desc">You can stop when the timer ends. You don't have to do it perfectly.</p>
+<div class="clock" id="clock">02:00</div>
+<div class="actions" style="justify-content:center"><button class="btn primary" id="timer-toggle">Start timer</button><button class="btn" id="timer-reset">Reset</button><button class="btn" id="finish">I did it</button></div>
+<div class="timer-help">The timer runs here. It doesn't block other apps.</div>
+</div>
+<h2 class="section-title">Or choose for yourself</h2><p class="section-help">Tap a category to see ideas. No quiz needed.</p>
+<div class="categories">
+<button class="category" data-cat="create"><span class="icon">✎</span><span><strong>Make something</strong><small>Draw, write, build</small></span></button>
+<button class="category" data-cat="move"><span class="icon">↗</span><span><strong>Move a little</strong><small>Walk, stretch, reset</small></span></button>
+<button class="category" data-cat="learn"><span class="icon">⌕</span><span><strong>Learn something</strong><small>Follow a question</small></span></button>
+<button class="category" data-cat="calm"><span class="icon">☾</span><span><strong>Slow down</strong><small>Rest or reset your space</small></span></button>
+<button class="category" data-cat="focus"><span class="icon">↳</span><span><strong>Get one thing done</strong><small>Take a small first step</small></span></button>
+<button class="category" data-cat="fun"><span class="icon">♫</span><span><strong>Have some fun</strong><small>Enjoy a little hobby</small></span></button>
+</div>
+<h2 class="section-title">How should I nudge you?</h2><p class="section-help">This changes the wording, not your phone settings.</p>
+<div class="mode-list">
+<button class="mode active" data-mode="gentle"><span class="radio"></span><span><strong>Gentle</strong><small>Kind reminders, no pressure.</small></span></button>
+<button class="mode" data-mode="firm"><span class="radio"></span><span><strong>Be direct</strong><small>Less talking. Pick the idea and start.</small></span></button>
+<button class="mode" data-mode="focus"><span class="radio"></span><span><strong>Keep it focused</strong><small>Show the timer and one task. This won't block other apps.</small></span></button>
+</div>
+<div class="note">Your progress is saved only in this browser on this device. No account needed.</div>
 </section>
-<section class="view" id="explore"><div class="eyebrow" style="margin-top:30px">A menu, not a mandate</div><h1 class="page-title">Do something<br><span style="color:var(--lime)">real.</span></h1><p class="page-intro">Pick what you have energy for. These are ideas, not obligations.</p><div class="categories" id="explore-categories">
-<button class="category" data-cat="create"><span class="ico">✳</span><strong>Create</strong><small>Make something</small></button><button class="category" data-cat="move"><span class="ico">↗</span><strong>Move</strong><small>Shift your energy</small></button><button class="category" data-cat="learn"><span class="ico">⌘</span><strong>Learn</strong><small>Follow curiosity</small></button><button class="category" data-cat="calm"><span class="ico">☾</span><strong>Unwind</strong><small>Find some quiet</small></button><button class="category" data-cat="focus"><span class="ico">◎</span><strong>Get it done</strong><small>One small task</small></button><button class="category" data-cat="fun"><span class="ico">⌁</span><strong>Have fun</strong><small>Enjoy your time</small></button></div><div class="section-head"><h2>Little things to try</h2><span class="step">2–10 MIN</span></div><div class="activity-list" id="activity-list"></div></section>
-<section class="view" id="progress"><div class="eyebrow" style="margin-top:30px">Quiet progress is still progress</div><h1 class="page-title">Look what<br>you <span style="color:var(--lime)">did.</span></h1><p class="page-intro">No pressure to optimise your life. This is just a record of the moments you chose to begin.</p><div class="stats-grid"><div class="stat-card"><strong id="stat-done">0</strong><small>Things completed</small></div><div class="stat-card"><strong id="stat-xp">0</strong><small>XP earned</small></div><div class="stat-card"><strong id="stat-streak">0</strong><small>Day streak</small></div><div class="stat-card"><strong id="stat-level">1</strong><small>Current level</small></div></div><div class="quote" id="progress-message">You don't need to change everything. One small choice is still a choice.</div><button class="reset-data" id="reset-data">Reset my local progress</button></section>
-<nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item active" data-view="home"><span>◉</span>Check in</button><button class="nav-item" data-view="explore"><span>✳</span>Explore</button><button class="nav-item" data-view="progress"><span>↗</span>Your progress</button></nav>
+<section class="view" id="explore">
+<div class="intro"><div class="kicker">IDEAS FOR REAL LIFE</div><h1 class="page-title">Find something<br>to do.</h1><p>Choose a category to narrow the list. Tap “Use this idea” when something sounds good.</p></div>
+<div class="filters" id="filters"></div><div class="activity-list" id="activity-list"></div>
+</section>
+<section class="view" id="progress">
+<div class="intro"><div class="kicker">YOUR OWN PACE</div><h1 class="page-title">Small things<br>still count.</h1><p>This is just a record of the activities you chose to mark as done. No streak pressure.</p></div>
+<div class="stats"><div class="stat"><strong id="stat-done">0</strong><small>Things completed</small></div><div class="stat"><strong id="stat-minutes">0</strong><small>Minutes you chose to spend</small></div></div>
+<div class="progress-copy" id="progress-copy">Try one small thing when you're ready. You can come back here to see what you've done.</div>
+<button class="reset" id="reset-data">Reset my progress on this device</button>
+</section>
+<nav class="nav" aria-label="Main navigation"><button class="active" data-view="home">Start here</button><button data-view="explore">Browse ideas</button><button data-view="progress">My progress</button></nav>
 </main>
 <script>
-const bank=[
-{id:1,cat:"create",icon:"✳",title:"Make something intentionally rough",desc:"Draw a tiny creature, sketch a logo, or write three strange lines. You're making a thing, not proving a talent.",mins:5,tags:["art","writing","design"]},
-{id:2,cat:"create",icon:"⌘",title:"Improve one small thing in a project",desc:"Open that app, edit, or idea you've been thinking about. Change one detail. Save it. That's enough for a start.",mins:7,tags:["coding","design","technology"]},
-{id:3,cat:"move",icon:"↗",title:"Move for the length of one song",desc:"Put on a song and walk, stretch, or move around in whatever way feels comfortable. No workout required.",mins:4,tags:["fitness","music"]},
-{id:4,cat:"move",icon:"☼",title:"Get a little air and notice three things",desc:"If it's safe and practical, step outside or sit by a window. Find three details you hadn't noticed yet.",mins:3,tags:["outdoors","wellness"]},
-{id:5,cat:"learn",icon:"⌘",title:"Follow one question you actually have",desc:"Look up something you've wondered about. When you find an answer, explain it in one sentence without copying it.",mins:5,tags:["science","reading","technology"]},
-{id:6,cat:"learn",icon:"▤",title:"Read two pages. Only two.",desc:"A book, a saved article, or a useful guide. No need to finish the chapter or turn this into a habit challenge.",mins:5,tags:["reading","study"]},
-{id:7,cat:"calm",icon:"☾",title:"Give your brain a quieter two minutes",desc:"Put the phone face down. Let your shoulders drop. Breathe normally and notice what's around you. No need to force your mind blank.",mins:2,tags:["wellness"]},
-{id:8,cat:"calm",icon:"⌂",title:"Reset one tiny corner of your space",desc:"Put five things away or clear one small surface. Stop there if you want. This is not a deep-cleaning mission.",mins:3,tags:["organization","home"]},
-{id:9,cat:"focus",icon:"◎",title:"Do the first two minutes of the thing",desc:"Open the assignment, document, or task you've been avoiding. Make the first move, not the whole thing.",mins:2,tags:["study","organization","coding"]},
-{id:10,cat:"focus",icon:"↳",title:"Get the next step out of your head",desc:"Write down the one thing that matters next, plus the smallest action that would move it forward.",mins:3,tags:["organization","study"]},
-{id:11,cat:"fun",icon:"♫",title:"Listen to a song without another screen",desc:"Pick a track you love. Put your phone down and listen all the way through. Notice one detail you hadn't heard before.",mins:4,tags:["music"]},
-{id:12,cat:"fun",icon:"▧",title:"Do a tiny hobby challenge",desc:"Build something in a game, try a new piano phrase, doodle, or practice one small skill for a few minutes.",mins:8,tags:["gaming","music","art"]},
-{id:13,cat:"focus",icon:"✎",title:"Write one honest sentence",desc:"In notes or on paper, finish this: 'What I actually want right now is…' You don't need to show anyone.",mins:2,tags:["writing","wellness"]},
-{id:14,cat:"fun",icon:"⌁",title:"Send a message you mean",desc:"Think of someone you like having in your life. Send a simple hello, a meme, or something that reminded you of them.",mins:3,tags:["wellness"]}
+const activities=[
+{id:1,cat:"create",icon:"✎",title:"Make a deliberately bad doodle",desc:"Draw a tiny creature or a strange object. It doesn't need to look good. Just make something.",mins:5},
+{id:2,cat:"create",icon:"⌘",title:"Change one thing in a project",desc:"Open a design, code project, or idea you've been sitting on. Improve one small detail and save it.",mins:7},
+{id:3,cat:"move",icon:"↗",title:"Move for one song",desc:"Play a song and walk, stretch, or move around in a way that feels comfortable. No workout required.",mins:4},
+{id:4,cat:"move",icon:"☼",title:"Find three things you hadn't noticed",desc:"Look out of a window or step outside if it's safe. Notice three small details around you.",mins:3},
+{id:5,cat:"learn",icon:"⌕",title:"Look up one question you've had",desc:"Find an answer to something you're genuinely curious about. Try explaining it in one sentence afterwards.",mins:5},
+{id:6,cat:"learn",icon:"▤",title:"Read two pages",desc:"A book, article, or guide. Stop after two pages if you want. You don't have to finish the chapter.",mins:5},
+{id:7,cat:"calm",icon:"☾",title:"Take a two-minute screen break",desc:"Put your phone face down, relax your shoulders, and look around. Your mind doesn't have to go blank.",mins:2},
+{id:8,cat:"calm",icon:"⌂",title:"Clear one small surface",desc:"Put five things away or clear one corner of your desk. Stop there; this isn't a deep-clean.",mins:3},
+{id:9,cat:"focus",icon:"↳",title:"Start the task for two minutes",desc:"Open the assignment, document, or task you've been avoiding. Do the first tiny step, not the whole thing.",mins:2},
+{id:10,cat:"focus",icon:"✎",title:"Write down the next step",desc:"Write one thing that needs doing and the smallest action that would move it forward.",mins:3},
+{id:11,cat:"fun",icon:"♫",title:"Listen to a song properly",desc:"Pick a song you love and listen without switching apps. Notice one detail you hadn't heard before.",mins:4},
+{id:12,cat:"fun",icon:"▧",title:"Try a tiny hobby challenge",desc:"Build something in a game, learn one piano phrase, doodle, or practise a skill for a few minutes.",mins:8},
+{id:13,cat:"focus",icon:"✎",title:"Finish this sentence honestly",desc:"Write: “What I actually want right now is…” You don't have to show anyone the answer.",mins:2},
+{id:14,cat:"fun",icon:"⌁",title:"Send someone a small hello",desc:"Send a meme, say hi, or share something that reminded you of someone. Keep it simple.",mins:3}
 ];
-const feelings={
-avoid:{label:"MAKE IT LESS HEAVY",ids:[9,10,8,13],title:"You don't need to finish it. Just touch it.",desc:"Give the thing you've been avoiding two minutes. Starting is the only goal."},
-restless:{label:"CHANGE YOUR STATE",ids:[3,4,12,8],title:"Let's get you out of that stuck feeling.",desc:"Pick one small physical or creative action and let your energy change naturally."},
-curious:{label:"FOLLOW THE SPARK",ids:[5,6,12,1,11],title:"Follow something that genuinely interests you.",desc:"No need to make it productive. Being interested is a good enough reason."},
-habit:{label:"BREAK THE AUTOPILOT",ids:[7,11,13,4],title:"Pause before the next scroll.",desc:"You don't have to throw your phone away. Just make one deliberate choice about the next few minutes."}
-};
-let data={xp:0,done:0,streak:0,lastDay:"",mode:"gentle",history:[]};
-try{const old=JSON.parse(localStorage.getItem("unmindy-app-v2")||"null");if(old)data={...data,...old};else{const previous=JSON.parse(localStorage.getItem("unmindy")||"null");if(previous)data={...data,xp:previous.xp||0,done:previous.done||0,streak:previous.streak||0,lastDay:previous.last||""}}}catch(e){}
-let feeling="",current=null,lastIds=[],remaining=120,deadline=0,interval=null,running=false;
+const labels={create:"Make something",move:"Move a little",learn:"Learn something",calm:"Slow down",focus:"Get one thing done",fun:"Have some fun"};
+const feelings={avoid:{ids:[9,10,8,13],title:"Make the first step tiny."},restless:{ids:[3,4,12,8],title:"Try changing what you're doing for a few minutes."},curious:{ids:[5,6,12,1,11],title:"Pick something that sounds genuinely interesting."},habit:{ids:[7,11,13,4],title:"Take a short pause, then choose what comes next."}};
+let data={done:0,minutes:0,mode:"gentle",history:[]};
+try{const saved=JSON.parse(localStorage.getItem("unmindy-simple-v1")||"null");if(saved)data={...data,...saved};else{const old=JSON.parse(localStorage.getItem("unmindy-app-v2")||"null");if(old)data={...data,done:old.done||0,minutes:(old.history||[]).length*3}}}catch(e){}
+let current=null,feeling=null,filter="all",remaining=120,deadline=0,interval=null,running=false;
 const $=id=>document.getElementById(id);
-const catNames={create:"Create",move:"Move",learn:"Learn",calm:"Unwind",focus:"Get it done",fun:"Have fun"};
-function save(){localStorage.setItem("unmindy-app-v2",JSON.stringify(data));renderStats()}
-function renderStats(){$("xp").textContent=data.xp+" XP";$("streak").textContent=data.streak+" "+(data.streak===1?"day":"day streak");$("stat-done").textContent=data.done;$("stat-xp").textContent=data.xp;$("stat-streak").textContent=data.streak;$("stat-level").textContent=Math.floor(data.xp/100)+1;$("progress-message").textContent=data.done===0?"You don't need to change everything. One small choice is still a choice.":data.done<5?"You're making space for yourself, one small moment at a time.":data.done<15?"Look at that. You've chosen to show up "+data.done+" times.":"You've started "+data.done+" times. That effort counts, even when it feels small."}
-function toast(msg){const el=document.createElement("div");el.className="toast";el.textContent=msg;document.body.appendChild(el);setTimeout(()=>el.remove(),2300)}
-function chooseFeel(key){feeling=key;document.querySelectorAll("[data-feel]").forEach(b=>b.classList.toggle("selected",b.dataset.feel===key));let f=feelings[key];let pool=f.ids.map(id=>bank.find(a=>a.id===id)).filter(Boolean);current=pool[Math.floor(Math.random()*pool.length)];lastIds=pool.map(a=>a.id);renderSuggestion(f.label);$("suggestion").classList.add("show");$("timer-panel").classList.remove("show");$("suggestion").scrollIntoView({behavior:"smooth",block:"nearest"})}
-function renderSuggestion(label){if(!current)return;$("suggestion-label").textContent=label||"YOUR NEXT MOVE";$("suggestion-time").textContent=current.mins+" MIN";$("suggestion-title").textContent=current.title;$("suggestion-desc").textContent=current.desc;$("timer-caption").textContent="You only need to begin. That's the whole assignment."}
-function setActivity(id){current=bank.find(a=>a.id===id)||bank[0];feeling="";document.querySelectorAll("[data-feel]").forEach(b=>b.classList.remove("selected"));renderSuggestion(catNames[current.cat].toUpperCase()+" · A SMALL STEP");$("suggestion").classList.add("show");$("timer-panel").classList.remove("show");switchView("home");window.scrollTo({top:$("suggestion").getBoundingClientRect().top+window.scrollY-30,behavior:"smooth"})}
-function another(){if(!feeling){let list=bank.filter(a=>a.cat===current?.cat);current=list[(list.findIndex(a=>a.id===current?.id)+1)%list.length]||bank[0];renderSuggestion(catNames[current.cat].toUpperCase());return}let pool=feelings[feeling].ids.map(id=>bank.find(a=>a.id===id)).filter(a=>a.id!==current?.id);current=pool[Math.floor(Math.random()*pool.length)]||bank[0];renderSuggestion(feelings[feeling].label)}
+function save(){localStorage.setItem("unmindy-simple-v1",JSON.stringify(data));renderStats()}
+function toast(message){const old=document.querySelector(".toast");if(old)old.remove();const el=document.createElement("div");el.className="toast";el.textContent=message;document.body.appendChild(el);setTimeout(()=>el.remove(),2200)}
+function renderStats(){$("header-count").textContent=data.done+" "+(data.done===1?"thing":"things")+" tried";$("stat-done").textContent=data.done;$("stat-minutes").textContent=data.minutes;$("progress-copy").textContent=data.done===0?"Nothing here yet. When you finish an idea and tap “I did it”, it will show up here.":data.done===1?"You've marked one thing as done. That counts. Come back whenever you want.":"You've marked "+data.done+" things as done, spending "+data.minutes+" minutes on them. No streak to maintain and nothing to catch up on."}
 function switchView(name){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===name));document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="explore")renderActivities();if(name==="progress")renderStats();window.scrollTo({top:0,behavior:"smooth"})}
-function renderActivities(){const el=$("activity-list");el.innerHTML=bank.map(a=>'<article class="activity-item"><div class="activity-icon">'+a.icon+'</div><div><h3>'+a.title+'</h3><p>'+a.desc+'</p><button class="mini-action" data-start="'+a.id+'">Try this · '+a.mins+' min ↗</button></div></article>').join("");el.querySelectorAll("[data-start]").forEach(b=>b.onclick=()=>setActivity(Number(b.dataset.start)))}
-function pickRandom(){const a=bank[Math.floor(Math.random()*bank.length)];setActivity(a.id)}
-function setMode(mode){data.mode=mode;document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));save();if(current&&feeling)renderSuggestion(feelings[feeling].label);toast(({gentle:"Gentle nudges on.",firm:"Firm nudges on. No shame, just a push.",focus:"Focus mode selected. One thing at a time."})[mode])}
-function fmt(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0")}
-function resetTimer(){clearInterval(interval);interval=null;running=false;remaining=(current?.mins||2)*60;$("clock").textContent=fmt(remaining);$("timer-toggle").textContent="Start timer";$("timer-progress").style.width="0%"}
-function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));$("clock").textContent=fmt(remaining);$("timer-progress").style.width=(1-remaining/((current?.mins||2)*60))*100+"%";if(remaining<=0){clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Time's up";toast("Time's up. You showed up for yourself.")}}
-function toggleTimer(){if(running){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Resume"}else{if(remaining<=0)remaining=(current?.mins||2)*60;deadline=Date.now()+remaining*1000;running=true;$("timer-toggle").textContent="Pause";interval=setInterval(tick,250)}}
-function complete(){clearInterval(interval);interval=null;running=false;const today=new Date().toLocaleDateString("en-CA");const yesterday=new Date(Date.now()-86400000).toLocaleDateString("en-CA");if(data.lastDay!==today){data.streak=data.lastDay===yesterday?data.streak+1:1;data.lastDay=today}data.done++;data.xp+=10;data.history=(data.history||[]).concat([{title:current?.title||"Small activity",date:today}]).slice(-30);save();$("timer-panel").classList.remove("show");$("suggestion").classList.remove("show");document.querySelectorAll("[data-feel]").forEach(b=>b.classList.remove("selected"));feeling="";toast("+10 XP · That counts. Well done.");window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-feel]").forEach(b=>b.addEventListener("click",()=>chooseFeel(b.dataset.feel)));
-document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>{const cat=b.dataset.cat;const list=bank.filter(a=>a.cat===cat);const a=list[Math.floor(Math.random()*list.length)];if(a)setActivity(a.id)}));
+function displayIdea(activity,label){current=activity; $("idea-label").textContent=label||labels[activity.cat];$("idea-title").textContent=activity.title;$("idea-desc").textContent=activity.desc;$("idea-meta").textContent="About "+activity.mins+" minutes · You can stop whenever you want.";$("idea").classList.add("show");$("timer").classList.remove("show");resetTimer();if(data.mode==="focus"){startTimerPanel()}else if(data.mode==="firm"){$("idea-label").textContent="HERE'S YOUR NEXT STEP"}}
+function pickFeeling(key){feeling=key;document.querySelectorAll("[data-feel]").forEach(b=>b.classList.toggle("selected",b.dataset.feel===key));const list=feelings[key].ids.map(id=>activities.find(a=>a.id===id));const activity=list[Math.floor(Math.random()*list.length)];displayIdea(activity,feelings[key].title);$("idea").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function nextIdea(){let list;if(feeling)list=feelings[feeling].ids.map(id=>activities.find(a=>a.id===id));else list=activities.filter(a=>a.cat===current.cat);list=list.filter(a=>a.id!==current.id);if(!list.length)list=activities.filter(a=>a.id!==current.id);displayIdea(list[Math.floor(Math.random()*list.length)],feeling?feelings[feeling].title:labels[current.cat])}
+function startTimerPanel(){if(!current)return;$("timer").classList.add("show");$("timer-title").textContent=data.mode==="firm"?"Start now. Keep it simple.":"Just start. That's enough.";$("timer-desc").textContent="Do the idea above until the timer ends, or stop whenever you want.";resetTimer();$("timer").scrollIntoView({behavior:"smooth",block:"center"})}
+function resetTimer(){clearInterval(interval);interval=null;running=false;remaining=(current?current.mins:2)*60;$("clock").textContent=formatTime(remaining);$("timer-toggle").textContent="Start timer"}
+function formatTime(n){return String(Math.floor(n/60)).padStart(2,"0")+":"+String(n%60).padStart(2,"0")}
+function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));$("clock").textContent=formatTime(remaining);if(remaining===0){clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Start again";toast("Time's up. Want to keep going or stop?")}}
+function toggleTimer(){if(running){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Resume"}else{if(remaining<=0)remaining=(current?current.mins:2)*60;deadline=Date.now()+remaining*1000;running=true;$("timer-toggle").textContent="Pause";interval=setInterval(tick,250)}}
+function complete(){clearInterval(interval);interval=null;running=false;if(!current){toast("Choose an idea first.");return}data.done++;data.minutes+=current.mins;data.history=(data.history||[]).concat([{id:current.id,title:current.title,mins:current.mins,at:Date.now()}]).slice(-100);save();$("timer").classList.remove("show");$("idea").classList.remove("show");document.querySelectorAll("[data-feel]").forEach(b=>b.classList.remove("selected"));feeling=null;current=null;toast("Marked as done. Nice.");window.scrollTo({top:0,behavior:"smooth"})}
+function renderFilters(){const el=$("filters");const all=[["all","All ideas"],...Object.entries(labels)];el.innerHTML=all.map(([key,name])=>'<button data-filter="'+key+'" class="'+(filter===key?"active":"")+'">'+name+'</button>').join("");el.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;renderFilters();renderActivities()})}
+function renderActivities(){renderFilters();const list=filter==="all"?activities:activities.filter(a=>a.cat===filter);$("activity-list").innerHTML=list.map(a=>'<article class="activity"><div class="activity-top"><div class="activity-icon">'+a.icon+'</div><div><h3>'+a.title+'</h3><p>'+a.desc+'</p></div></div><div class="activity-bottom"><span class="duration">About '+a.mins+' min</span><button class="btn" data-use="'+a.id+'">Use this idea</button></div></article>').join("");$("activity-list").querySelectorAll("[data-use]").forEach(b=>b.onclick=()=>{const a=activities.find(x=>x.id===Number(b.dataset.use));feeling=null;document.querySelectorAll("[data-feel]").forEach(x=>x.classList.remove("selected"));switchView("home");displayIdea(a,"YOUR PICK");$("idea").scrollIntoView({behavior:"smooth",block:"center"})})}
+function setMode(mode){data.mode=mode;document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));save();if(mode==="focus"&&current)startTimerPanel();toast(({gentle:"Gentle nudges selected.",firm:"Direct nudges selected.",focus:"Focused timer selected. Apps won't be blocked."})[mode])}
+document.querySelectorAll("[data-feel]").forEach(b=>b.addEventListener("click",()=>pickFeeling(b.dataset.feel)));
+document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.cat;renderActivities();switchView("explore")}));
 document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
 document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
-$("surprise").addEventListener("click",pickRandom);$("another").addEventListener("click",another);
-$("start-activity").addEventListener("click",()=>{$("timer-panel").classList.add("show");resetTimer();$("timer-panel").scrollIntoView({behavior:"smooth",block:"center"})});
-$("timer-toggle").addEventListener("click",toggleTimer);$("timer-reset").addEventListener("click",resetTimer);$("finish").addEventListener("click",complete);
-$("reset-data").addEventListener("click",()=>{if(confirm("Reset your Unmindy progress on this device? This cannot be undone.")){data={xp:0,done:0,streak:0,lastDay:"",mode:"gentle",history:[]};save();toast("Local progress reset.")}});
+$("use-idea").addEventListener("click",startTimerPanel);$("change-idea").addEventListener("click",nextIdea);$("timer-toggle").addEventListener("click",toggleTimer);$("timer-reset").addEventListener("click",resetTimer);$("finish").addEventListener("click",complete);
+$("reset-data").addEventListener("click",()=>{if(confirm("Reset your saved progress on this device? This cannot be undone.")){data={done:0,minutes:0,mode:"gentle",history:[]};save();toast("Progress reset.")}});
 document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",b.dataset.mode===data.mode));renderStats();renderActivities();
-</script></body></html>
+</script>
+</body>
+</html>
