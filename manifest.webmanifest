@@ -1,9 +1,14 @@
 {
-  "name": "Unmindy — Start Small",
-  "short_name": "Unmindy",
-  "start_url": "./",
+  "id": "/",
+  "name": "UNMINDY — a little less autopilot",
+  "short_name": "UNMINDY",
+  "description": "A small reset from the scroll. Find one real-world thing to do next.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#10110f",
-  "theme_color": "#10110f",
-  "description": "A tiny nudge back to what matters."
+  "orientation": "portrait-primary",
+  "background_color": "#f7f5ed",
+  "theme_color": "#f7f5ed",
+  "categories": ["lifestyle", "productivity"],
+  "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
 }
