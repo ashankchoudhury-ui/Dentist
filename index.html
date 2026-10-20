@@ -183,6 +183,31 @@ a{color:inherit}
 .timer-progress span{background:var(--accent-green)}
 .dialog-confirm{background:var(--accent-green);border-color:var(--accent-green)}
 
+
+/* Typography tune: warm, grounded, quietly expressive */
+:root{--type-display:"Trebuchet MS",ui-sans-serif,system-ui,sans-serif;--type-body:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--type-accent:Georgia,"Times New Roman",serif}
+body{font-family:var(--type-body);letter-spacing:-.18px;font-size:16px;line-height:1.58}
+.brand-name{font-family:var(--type-display);font-weight:900;letter-spacing:2.5px}
+.brand-caption{letter-spacing:.05px;line-height:1.35}
+.nav-button,.install-button,.button-primary,.button-quiet,.text-button,.link-button,.filters button,.activity-bottom button{font-family:var(--type-body);font-weight:700;letter-spacing:-.2px}
+.hero h1,.page-hero h1{font-family:var(--type-display);font-weight:850;letter-spacing:-.065em;line-height:.98}
+.hero h1 em,.page-hero h1 em{font-family:var(--type-accent);font-weight:400;font-style:italic;letter-spacing:-.075em}
+.eyebrow,.section-kicker,.rec-kicker,.activity-meta,.stat-label{font-family:var(--type-body);font-size:10px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}
+.hero-copy,.section-head p,.page-hero p,.recommendation p,.activity p,.history-intro{font-family:var(--type-body);font-size:15px;line-height:1.7;letter-spacing:-.12px}
+.section-head h2,.teaser-head h2,.recommendation h3,.history-heading h2{font-family:var(--type-display);font-weight:800;letter-spacing:-.055em;line-height:1.08}
+.mood-title,.teaser strong,.activity h3,.history-title{font-family:var(--type-body);font-weight:750;letter-spacing:-.45px;line-height:1.3}
+.mood-sub,.teaser small,.activity small,.history-meta{font-family:var(--type-body);font-weight:450;letter-spacing:0;line-height:1.5}
+.timer-clock,.stat strong{font-family:var(--type-display);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.06em}
+.footer-note,.privacy-panel,.empty-history,.history-dialog p{letter-spacing:0;line-height:1.65}
+@media(max-width:520px){
+ .hero h1,.page-hero h1{letter-spacing:-.07em;line-height:.97}
+ .hero h1 em,.page-hero h1 em{letter-spacing:-.075em}
+ .hero-copy,.section-head p,.page-hero p{font-size:14px;line-height:1.7}
+ .mood-title{font-size:15px;letter-spacing:-.3px}
+ .mood-sub{font-size:12px;line-height:1.5}
+ .section-head h2,.teaser-head h2{letter-spacing:-.045em}
+}
+
 </style>
 </head>
 <body>
