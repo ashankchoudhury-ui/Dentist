@@ -3,144 +3,145 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#151613">
-<meta name="description" content="A quieter way to choose what to do next.">
+<meta name="theme-color" content="#f4f0e7">
+<meta name="description" content="A small nudge to do something that feels like yours.">
 <link rel="manifest" href="manifest.webmanifest">
-<title>unmindy — step out of the scroll</title>
+<title>unmindy — do something that feels like yours</title>
 <style>
-:root{color-scheme:dark;--bg:#151613;--paper:#e9e5d8;--muted:#aaa99d;--faint:#77796e;--line:#35372f;--olive:#c4d28b;--rust:#d98d6b;--panel:#1d1f1a}
+:root{color-scheme:light;--bg:#f4f0e7;--ink:#20221d;--muted:#73746b;--line:#d8d5ca;--blue:#344fe0;--blue-dark:#2839ad;--orange:#e86e45;--paper:#fffdf7;--green:#dce5bc}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--paper);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button{font:inherit;cursor:pointer;color:inherit}
-button:focus-visible{outline:2px solid var(--olive);outline-offset:4px}
-.app{max-width:520px;min-height:100dvh;margin:auto;padding:0 22px calc(86px + env(safe-area-inset-bottom))}
-header{height:62px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
-.wordmark{font-size:15px;letter-spacing:1.2px;font-weight:850}.wordmark i{font-style:normal;color:var(--olive)}
-.header-note{font-size:11px;color:var(--muted)}
-.view{display:none}.view.active{display:block;animation:appear .22s ease}
-.home-intro{padding:34px 0 28px}
-.eyebrow{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--olive);font-weight:750}
-h1{font-size:clamp(38px,10vw,48px);letter-spacing:-2.4px;line-height:1.02;font-weight:650;margin:15px 0 13px}
-h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--olive)}
-.home-intro p{color:var(--muted);font-size:14px;max-width:325px;line-height:1.7;margin:0}
-.prompt-label{font-size:12px;color:var(--muted);margin-bottom:10px}
-.feeling-list{border-top:1px solid var(--line)}
-.feeling{width:100%;display:flex;align-items:center;gap:13px;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:16px 2px;min-height:66px}
-.feeling .n{width:25px;color:var(--faint);font:12px Georgia,serif;flex:none}
-.feeling .words{flex:1;font-size:15px}
-.feeling .arrow{color:var(--faint);font-size:18px;transition:transform .18s}
-.feeling:active .arrow{transform:translateX(3px)}
-.feeling:hover .words,.feeling:focus-visible .words{color:var(--olive)}
-.answer{display:none;padding:21px 0 9px;animation:appear .2s ease}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;color:inherit}button:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.app{max-width:600px;min-height:100dvh;margin:auto;padding:0 25px calc(92px + env(safe-area-inset-bottom))}
+header{height:67px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:900;letter-spacing:1.7px}
+.logo-mark{width:23px;height:23px;background:var(--blue);border-radius:50% 50% 50% 4px;transform:rotate(-14deg);position:relative}
+.logo-mark:after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#f4f0e7;top:8px;left:8px}
+.header-right{font-size:11px;color:var(--muted)}
+.view{display:none}.view.active{display:block;animation:enter .2s ease}
+.hero{padding:32px 0 25px}
+.kicker{font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--blue)}
+h1{font-size:clamp(42px,10vw,58px);line-height:.99;letter-spacing:-3.6px;margin:13px 0 15px;font-weight:850;max-width:470px}
+h1 .accent{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-style:italic;color:var(--blue);letter-spacing:-2.6px}
+.hero-copy{margin:0;color:var(--muted);font-size:14px;line-height:1.65;max-width:355px}
+.question-row{display:flex;justify-content:space-between;align-items:center;margin:4px 0 11px}
+.question-row strong{font-size:12px;font-weight:800}
+.question-row span{font-size:10px;color:var(--muted)}
+.choices{display:grid;gap:8px}
+.choice{position:relative;display:grid;grid-template-columns:36px 1fr 22px;gap:10px;align-items:center;text-align:left;width:100%;min-height:69px;padding:12px 15px;background:var(--paper);border:1px solid var(--line);border-radius:9px;transition:border-color .15s,transform .15s,background .15s}
+.choice:hover{border-color:var(--blue);transform:translateY(-1px)}
+.choice:active{transform:scale(.99)}
+.choice-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:#e9e8dc;font-size:16px}
+.choice:nth-child(2) .choice-icon{background:#f8e2d8}.choice:nth-child(3) .choice-icon{background:#e2e7ff}.choice:nth-child(4) .choice-icon{background:#e4ebd3}
+.choice-label{font-size:14px;font-weight:750;line-height:1.3}
+.choice-sub{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:3px}
+.choice-arrow{font-size:18px;color:var(--blue);text-align:right}
+.answer{display:none;margin-top:18px;padding:20px;background:var(--blue);color:white;border-radius:12px;animation:enter .2s ease}
 .answer.show{display:block}
-.back{border:0;background:transparent;padding:0;color:var(--muted);font-size:12px;margin-bottom:22px}
-.answer-kicker{color:var(--olive);font-size:10px;letter-spacing:1.4px;text-transform:uppercase}
-.answer h2{font-size:30px;letter-spacing:-1.3px;line-height:1.12;font-weight:650;margin:9px 0 12px}
-.answer p{font-size:14px;line-height:1.7;color:var(--muted);margin:0}
-.why{border-left:2px solid var(--rust);padding:2px 0 2px 13px;margin:18px 0;color:#d5d0c2;font-size:12px;line-height:1.6}
-.action-row{display:flex;align-items:center;gap:10px;margin-top:21px;flex-wrap:wrap}
-.primary{border:0;border-radius:3px;background:var(--olive);color:#1a1c14;font-weight:800;font-size:12px;padding:13px 17px}
-.text-btn{border:0;background:transparent;color:var(--muted);font-size:12px;padding:10px 0}
-.timer{display:none;margin:20px 0 12px;padding:22px 0 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);animation:appear .2s ease}
-.timer.show{display:block}
-.timer-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.timer-top span{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-.clock{font-size:62px;font-weight:500;letter-spacing:-3px;line-height:1.2;font-variant-numeric:tabular-nums;margin:12px 0}
-.timer-actions{display:flex;gap:17px;align-items:center}
-.timer-actions .text-btn{padding:12px 0}
-.timer-foot{font-size:11px;color:var(--faint);margin-top:13px}
-.section-line{display:flex;justify-content:space-between;align-items:baseline;margin:35px 0 10px}
-.section-line h2{font-size:15px;font-weight:650;margin:0}
-.section-line button{border:0;background:transparent;color:var(--olive);font-size:11px;padding:0}
-.quick-cats{display:flex;flex-wrap:wrap;gap:7px}
-.pill{border:1px solid var(--line);background:transparent;border-radius:99px;color:#d3d0c5;font-size:12px;padding:9px 13px}
-.pill:active,.pill:hover{border-color:var(--olive);color:var(--olive)}
-.footnote{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:11px;color:var(--faint);line-height:1.7}
-.nav{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(3,1fr);padding:7px 18px calc(7px + env(safe-area-inset-bottom));background:#151613f5;border-top:1px solid var(--line)}
-.nav button{background:transparent;border:0;padding:10px 3px;color:var(--faint);font-size:11px}
-.nav button.active{color:var(--olive)}
-.nav button.active:before{content:"";display:block;height:2px;width:18px;background:var(--olive);margin:0 auto 6px}
-.page-intro{padding:30px 0 21px}.page-intro h1{margin-top:11px}.page-intro p{color:var(--muted);font-size:13px;line-height:1.65;margin:0}
-.filters{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:0 0 16px}
-.filters button{white-space:nowrap;border:1px solid var(--line);border-radius:99px;padding:7px 11px;background:transparent;color:var(--muted);font-size:11px}
-.filters button.active{background:var(--olive);border-color:var(--olive);color:#1a1c14}
+.answer-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.answer-kicker{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;font-weight:800;color:#d7ddff}
+.back{border:0;background:transparent;color:#e0e4ff;font-size:11px;padding:0}
+.answer h2{font-size:29px;letter-spacing:-1.4px;line-height:1.05;margin:16px 0 10px;max-width:380px}
+.answer p{font-size:13px;line-height:1.65;color:#e5e8ff;margin:0;max-width:390px}
+.answer-note{margin-top:13px;font-size:11px;color:#cdd4ff;line-height:1.5}
+.answer-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.primary{border:0;border-radius:6px;background:#f5f0df;color:#20221d;font-size:12px;font-weight:850;padding:13px 15px}
+.primary:active{transform:scale(.98)}
+.ghost{border:1px solid #7f8ce9;background:transparent;color:white;border-radius:6px;font-size:12px;padding:12px 13px}
+.timer{display:none;margin-top:10px;padding:18px 0 8px;border-top:1px solid #8290ef}
+.timer.show{display:block;animation:enter .2s ease}
+.timer-meta{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#d7ddff}
+.clock{font-size:54px;letter-spacing:-2px;font-weight:750;font-variant-numeric:tabular-nums;margin:10px 0 7px}
+.timer-actions{display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+.timer-actions button{font-size:11px}
+.timer-actions .link{border:0;background:transparent;color:#e0e4ff;padding:10px 0}
+.timer-foot{font-size:10px;color:#cdd4ff;margin-top:12px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:32px 0 12px}
+.section-head h2{font-size:16px;letter-spacing:-.4px;margin:0}
+.section-head button{border:0;background:transparent;color:var(--blue);font-size:11px;font-weight:800;padding:0}
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.category{min-height:73px;text-align:left;border:1px solid var(--line);border-radius:8px;background:transparent;padding:12px 11px;font-size:11px;font-weight:800;line-height:1.3}
+.category span{display:block;font-size:17px;margin-bottom:7px;color:var(--blue)}
+.category:hover{background:var(--paper);border-color:var(--blue)}
+.note{font-size:11px;color:var(--muted);line-height:1.6;margin:25px 0 0;padding-top:13px;border-top:1px solid var(--line)}
+.nav{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(600px,100%);display:grid;grid-template-columns:repeat(3,1fr);padding:8px 20px calc(8px + env(safe-area-inset-bottom));background:#f4f0e7f2;backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.nav button{border:0;background:transparent;color:var(--muted);padding:9px 3px;font-size:11px;font-weight:750}
+.nav button.active{color:var(--blue)}
+.nav button.active:before{content:"";display:block;width:20px;height:3px;border-radius:9px;background:var(--blue);margin:0 auto 6px}
+.page-head{padding:30px 0 21px}.page-head h1{margin:12px 0}.page-head p{font-size:13px;line-height:1.6;color:var(--muted);margin:0;max-width:380px}
+.filters{display:flex;gap:7px;overflow:auto;scrollbar-width:none;padding:0 0 15px}.filters::-webkit-scrollbar{display:none}
+.filters button{white-space:nowrap;border:1px solid var(--line);border-radius:99px;padding:8px 12px;background:transparent;color:var(--muted);font-size:11px;font-weight:750}
+.filters button.active{background:var(--blue);border-color:var(--blue);color:white}
 .activity-list{border-top:1px solid var(--line)}
-.activity{padding:17px 0;border-bottom:1px solid var(--line)}
-.activity-top{display:flex;gap:12px;align-items:flex-start}
-.activity-symbol{font-size:17px;color:var(--rust);width:21px;flex:none;padding-top:1px}
-.activity h3{font-size:15px;line-height:1.35;margin:0 0 5px;font-weight:650}
-.activity p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
-.activity-bottom{display:flex;align-items:center;justify-content:space-between;margin:12px 0 0 33px}
-.duration{font-size:11px;color:var(--faint)}
-.activity-bottom button{border:0;border-bottom:1px solid #737d50;background:transparent;color:var(--olive);font-size:11px;padding:3px 0}
-.stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:17px}
-.stat{padding:20px 0}.stat+ .stat{border-left:1px solid var(--line);padding-left:20px}
-.stat strong{display:block;font:40px/1 Georgia,"Times New Roman",serif;color:var(--olive)}
-.stat small{display:block;font-size:11px;color:var(--muted);margin-top:7px}
-.history-title{font-size:13px;margin:27px 0 7px}
-.history-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}
-.history-row span:last-child{color:var(--muted);white-space:nowrap}
-.empty{font-size:12px;color:var(--muted);line-height:1.7;padding:18px 0;border-bottom:1px solid var(--line)}
-.reset{margin-top:25px;background:transparent;border:0;color:var(--faint);font-size:11px;text-decoration:underline;padding:0}
-.toast{position:fixed;z-index:10;bottom:83px;left:50%;transform:translateX(-50%);background:var(--paper);color:var(--bg);padding:10px 14px;font-size:12px;max-width:90vw}
-@keyframes appear{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-@media(min-width:650px){body{padding:20px 0}.app{min-height:calc(100dvh - 40px);border:1px solid var(--line);padding-left:28px;padding-right:28px}.nav{bottom:20px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+.activity{display:grid;grid-template-columns:42px 1fr;gap:12px;padding:17px 0;border-bottom:1px solid var(--line)}
+.activity-icon{width:39px;height:39px;border-radius:11px;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;color:var(--blue);font-size:18px}
+.activity h3{font-size:14px;line-height:1.3;margin:1px 0 5px;font-weight:800}
+.activity p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}
+.activity-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
+.duration{font-size:10px;color:var(--muted)}
+.activity-bottom button{border:0;border-radius:5px;background:#e2e6ff;color:var(--blue-dark);font-size:11px;font-weight:800;padding:8px 10px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 28px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:17px}
+.stat strong{display:block;font-size:37px;line-height:1;letter-spacing:-2px;color:var(--blue)}
+.stat small{display:block;color:var(--muted);font-size:11px;margin-top:9px}
+.history-title{font-size:14px;font-weight:850;margin:0 0 8px}
+.history-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px}
+.history-row span:last-child{color:var(--muted);white-space:nowrap;font-size:11px}
+.empty{background:var(--paper);border:1px dashed #c9c6ba;border-radius:9px;color:var(--muted);font-size:12px;line-height:1.7;padding:17px}
+.reset{margin-top:25px;border:0;background:transparent;color:var(--muted);font-size:11px;text-decoration:underline;padding:0}
+.toast{position:fixed;z-index:10;bottom:90px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:7px;padding:11px 15px;font-size:12px;max-width:90vw;box-shadow:0 8px 30px #0002}
+@keyframes enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:650px){body{padding:20px 0}.app{min-height:calc(100dvh - 40px);border:1px solid var(--line);border-radius:15px;padding-left:32px;padding-right:32px}.nav{bottom:20px;border-radius:0 0 15px 15px}}
+@media(max-width:360px){.app{padding-left:17px;padding-right:17px}h1{letter-spacing:-2.7px}.category-grid{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
 <main class="app">
-<header><div class="wordmark">UNMINDY<i> /</i></div><div class="header-note" id="header-note">a moment for yourself</div></header>
+<header><div class="logo"><span class="logo-mark"></span><span>UNMINDY</span></div><div class="header-right">A little less autopilot.</div></header>
 <section class="view active" id="home">
-<div class="home-intro"><div class="eyebrow">STEP OUT OF THE SCROLL</div><h1>What do you<br>want more of<br><em>right now?</em></h1><p>You don't need a new routine. Just choose what would make the next few minutes feel a little better.</p></div>
-<div id="checkin">
-<div class="prompt-label">Pick one. Go with your first instinct.</div>
-<div class="feeling-list">
-<button class="feeling" data-feel="avoid"><span class="n">01</span><span class="words">I need to get something started</span><span class="arrow">↗</span></button>
-<button class="feeling" data-feel="restless"><span class="n">02</span><span class="words">I need a change of pace</span><span class="arrow">↗</span></button>
-<button class="feeling" data-feel="curious"><span class="n">03</span><span class="words">I want to make or learn something</span><span class="arrow">↗</span></button>
-<button class="feeling" data-feel="habit"><span class="n">04</span><span class="words">I opened my phone without thinking</span><span class="arrow">↗</span></button>
-</div>
+<div class="hero"><div class="kicker">A SMALL RESET</div><h1>Make the next<br>few minutes<br><span class="accent">feel like yours.</span></h1><p class="hero-copy">No perfect routine. No pressure to be productive. Just pick what you need right now.</p></div>
+<div class="question-row"><strong>What's your mood?</strong><span>Choose one to get an idea</span></div>
+<div class="choices">
+<button class="choice" data-feel="start"><span class="choice-icon">↗</span><span class="choice-label">I keep putting something off<span class="choice-sub">Help me get moving</span></span><span class="choice-arrow">→</span></button>
+<button class="choice" data-feel="shift"><span class="choice-icon">☼</span><span class="choice-label">I need a change of scene<span class="choice-sub">Get out of this headspace</span></span><span class="choice-arrow">→</span></button>
+<button class="choice" data-feel="curious"><span class="choice-icon">✳</span><span class="choice-label">I want to make or learn<span class="choice-sub">Follow a little curiosity</span></span><span class="choice-arrow">→</span></button>
+<button class="choice" data-feel="scroll"><span class="choice-icon">◌</span><span class="choice-label">I'm scrolling for no reason<span class="choice-sub">Choose something else, gently</span></span><span class="choice-arrow">→</span></button>
 </div>
 <div class="answer" id="answer" aria-live="polite">
-<button class="back" id="back">← Back to choices</button>
-<div class="answer-kicker" id="answer-kicker">A SMALL IDEA</div>
-<h2 id="answer-title"></h2><p id="answer-desc"></p><div class="why" id="answer-note"></div>
-<div class="action-row"><button class="primary" id="begin">Give it 3 minutes ↗</button><button class="text-btn" id="another">Another idea</button></div>
+<div class="answer-top"><div class="answer-kicker" id="answer-kicker">YOUR NEXT SMALL THING</div><button class="back" id="back">← Change answer</button></div>
+<h2 id="answer-title"></h2><p id="answer-desc"></p><div class="answer-note" id="answer-note"></div>
+<div class="answer-actions"><button class="primary" id="begin">Start for 3 minutes ↗</button><button class="ghost" id="another">Try another</button></div>
+<div class="timer" id="timer"><div class="timer-meta"><span id="timer-label">YOUR TIME</span><button class="back" id="close-timer">Hide timer</button></div><div class="clock" id="clock">03:00</div><div class="timer-actions"><button class="primary" id="timer-toggle">Pause</button><button class="link" id="timer-reset">Restart</button><button class="link" id="finish">I'm done ✓</button></div><div class="timer-foot">Timer is running only on this page. It won't block other apps.</div></div>
 </div>
-<div class="timer" id="timer">
-<div class="timer-top"><span id="timer-label">YOUR THREE MINUTES</span><button class="text-btn" id="close-timer" style="padding:0">Hide</button></div>
-<div class="clock" id="clock">03:00</div>
-<div class="timer-actions"><button class="primary" id="timer-toggle">Start timer</button><button class="text-btn" id="timer-reset">Reset</button><button class="text-btn" id="finish">I'm done</button></div>
-<div class="timer-foot">This is just a timer. It won't block your other apps.</div>
+<div class="section-head"><h2>Or pick an activity</h2><button id="all-ideas">See all ideas ↗</button></div>
+<div class="category-grid">
+<button class="category" data-cat="create"><span>✳</span>Make something</button><button class="category" data-cat="move"><span>↗</span>Move a little</button><button class="category" data-cat="learn"><span>⌕</span>Learn something</button><button class="category" data-cat="calm"><span>☾</span>Unwind</button><button class="category" data-cat="focus"><span>↳</span>Get one thing done</button><button class="category" data-cat="fun"><span>♫</span>Have some fun</button>
 </div>
-<div class="section-line"><h2>Or go straight to an activity</h2><button id="all-ideas">All ideas ↗</button></div>
-<div class="quick-cats"><button class="pill" data-cat="create">Make something</button><button class="pill" data-cat="move">Move</button><button class="pill" data-cat="learn">Learn</button><button class="pill" data-cat="calm">Unwind</button><button class="pill" data-cat="focus">Get one thing done</button><button class="pill" data-cat="fun">Have fun</button></div>
-<div class="footnote">No score. No streak to protect. Your activity history stays on this device.</div>
+<p class="note">This isn't a challenge to complete. It's a place to choose one small thing, then get on with your day.</p>
 </section>
 <section class="view" id="explore">
-<div class="page-intro"><div class="eyebrow">THE ACTIVITY SHELF</div><h1>Find your<br><em>next thing.</em></h1><p>Small ideas for the time and energy you have. Pick one that feels right; leave the rest.</p></div>
+<div class="page-head"><div class="kicker">THE ACTIVITY SHELF</div><h1>Pick a <span class="accent">next thing.</span></h1><p>Ideas that fit into real life. No gear, no setup, no need to do them all.</p></div>
 <div class="filters" id="filters"></div><div class="activity-list" id="activity-list"></div>
 </section>
 <section class="view" id="progress">
-<div class="page-intro"><div class="eyebrow">A RECORD, NOT A SCORE</div><h1>Things you<br><em>made time for.</em></h1><p>Only activities you mark as done show up here. There's nothing to keep up with.</p></div>
-<div class="stats"><div class="stat"><strong id="stat-done">0</strong><small>Things completed</small></div><div class="stat"><strong id="stat-minutes">0</strong><small>Minutes spent</small></div></div>
-<h2 class="history-title">Recently</h2><div id="history"></div>
-<button class="reset" id="reset-data">Clear my history on this device</button>
+<div class="page-head"><div class="kicker">YOUR OWN PACE</div><h1>Look what you<br><span class="accent">made room for.</span></h1><p>Only the things you mark as done show up here. No streaks, no judgement.</p></div>
+<div class="stats"><div class="stat"><strong id="stat-done">0</strong><small>Activities completed</small></div><div class="stat"><strong id="stat-minutes">0</strong><small>Minutes spent</small></div></div>
+<h2 class="history-title">Recently</h2><div id="history"></div><button class="reset" id="reset-data">Clear history on this device</button>
 </section>
-<nav class="nav" aria-label="Main navigation"><button class="active" data-view="home">Check in</button><button data-view="explore">Activities</button><button data-view="progress">Your history</button></nav>
+<nav class="nav" aria-label="Main navigation"><button class="active" data-view="home">Check in</button><button data-view="explore">Activities</button><button data-view="progress">History</button></nav>
 </main>
 <script>
 const activities=[
-{id:1,cat:"create",symbol:"✳",title:"Make a deliberately bad doodle",desc:"Draw a tiny creature or a strange object. It doesn't need to look good. Just make something.",mins:5},
+{id:1,cat:"create",symbol:"✳",title:"Draw a terrible little doodle",desc:"Draw a tiny creature or strange object. It doesn't need to look good. Just make something.",mins:5},
 {id:2,cat:"create",symbol:"⌘",title:"Change one thing in a project",desc:"Open a design, code project, or idea you've been sitting on. Improve one small detail and save it.",mins:7},
-{id:3,cat:"move",symbol:"↗",title:"Move for one song",desc:"Play a song and walk, stretch, or move around in a way that feels comfortable. No workout required.",mins:4},
-{id:4,cat:"move",symbol:"☼",title:"Find three things you hadn't noticed",desc:"Look out of a window or step outside if it's safe. Notice three small details around you.",mins:3},
-{id:5,cat:"learn",symbol:"⌕",title:"Look up one question you've had",desc:"Find an answer to something you're genuinely curious about. Try explaining it in one sentence afterwards.",mins:5},
+{id:3,cat:"move",symbol:"↗",title:"Move for one song",desc:"Play a song and walk, stretch, or move in a way that feels comfortable. No workout required.",mins:4},
+{id:4,cat:"move",symbol:"☼",title:"Notice three new details",desc:"Look out of a window or step outside if it's safe. Find three things you usually overlook.",mins:3},
+{id:5,cat:"learn",symbol:"⌕",title:"Answer one question you have",desc:"Look up something you're genuinely curious about. Try explaining it in one sentence afterwards.",mins:5},
 {id:6,cat:"learn",symbol:"▤",title:"Read two pages",desc:"A book, article, or guide. Stop after two pages if you want. You don't have to finish the chapter.",mins:5},
-{id:7,cat:"calm",symbol:"☾",title:"Take a two-minute screen break",desc:"Put your phone face down, relax your shoulders, and look around. Your mind doesn't have to go blank.",mins:2},
-{id:8,cat:"calm",symbol:"⌂",title:"Clear one small surface",desc:"Put five things away or clear one corner of your desk. Stop there; this isn't a deep-clean.",mins:3},
+{id:7,cat:"calm",symbol:"☾",title:"Put your phone face down",desc:"Take two minutes to relax your shoulders and look around. Your mind doesn't have to go blank.",mins:2},
+{id:8,cat:"calm",symbol:"⌂",title:"Reset one small surface",desc:"Put five things away or clear one corner of your desk. Stop there; this isn't a deep-clean.",mins:3},
 {id:9,cat:"focus",symbol:"↳",title:"Start the task for two minutes",desc:"Open the assignment, document, or task you've been avoiding. Do the first tiny step, not the whole thing.",mins:2},
 {id:10,cat:"focus",symbol:"✎",title:"Write down the next step",desc:"Write one thing that needs doing and the smallest action that would move it forward.",mins:3},
 {id:11,cat:"fun",symbol:"♫",title:"Listen to a song properly",desc:"Pick a song you love and listen without switching apps. Notice one detail you hadn't heard before.",mins:4},
@@ -148,37 +149,37 @@ const activities=[
 {id:13,cat:"focus",symbol:"✎",title:"Finish this sentence honestly",desc:"Write: “What I actually want right now is…” You don't have to show anyone the answer.",mins:2},
 {id:14,cat:"fun",symbol:"⌁",title:"Send someone a small hello",desc:"Send a meme, say hi, or share something that reminded you of someone. Keep it simple.",mins:3}
 ];
-const categoryNames={all:"All",create:"Create",move:"Move",learn:"Learn",calm:"Unwind",focus:"Focus",fun:"Fun"};
+const categoryNames={all:"All ideas",create:"Make",move:"Move",learn:"Learn",calm:"Unwind",focus:"Focus",fun:"Fun"};
 const suggestions={
-avoid:{ids:[9,10,8,13],title:"Make the first step smaller.",note:"Two minutes is enough to get started. You don't have to finish the whole thing."},
-restless:{ids:[3,4,12,8],title:"Change what you're doing for a moment.",note:"A small change of scene or movement can be enough. Pick something easy."},
-curious:{ids:[5,6,12,1,11],title:"Follow something that interests you.",note:"It doesn't have to be useful. Enjoying something is a good enough reason."},
-habit:{ids:[7,11,13,4],title:"Take a pause before the next scroll.",note:"You don't have to put your phone away for the whole day. Just choose the next few minutes on purpose."}
+start:{ids:[9,10,8,13],title:"Make the first step tiny.",note:"You only need to begin. You can decide what comes after once you're moving."},
+shift:{ids:[3,4,12,8],title:"Change one small thing around you.",note:"You don't need a whole new plan. A tiny change is enough for now."},
+curious:{ids:[5,6,12,1,11],title:"Follow the thing you're curious about.",note:"It doesn't have to be useful. Being interested is a good enough reason."},
+scroll:{ids:[7,11,13,4],title:"Take a breath, then choose.",note:"You don't have to quit your phone forever. Just make the next few minutes intentional."}
 };
-let data={done:0,minutes:0,history:[]},current=null,feeling=null,filter="all",remaining=180,deadline=0,interval=null,running=false;
+let data={done:0,minutes:0,history:[]},current=null,feeling=null,filter="all",remaining=180,deadline=0,interval=null,running=false,startedAt=0,elapsed=0;
 const $=id=>document.getElementById(id);
-try{const saved=JSON.parse(localStorage.getItem("unmindy-editorial-v1")||"null");if(saved)data={...data,...saved};else{const old=JSON.parse(localStorage.getItem("unmindy-simple-v1")||"null");if(old)data={...data,...old}}}catch(e){}
+try{const saved=JSON.parse(localStorage.getItem("unmindy-editorial-v2")||"null");if(saved)data={...data,...saved};else{const old=JSON.parse(localStorage.getItem("unmindy-editorial-v1")||localStorage.getItem("unmindy-simple-v1")||"null");if(old)data={...data,...old}}}catch(e){}
 function toast(message){document.querySelector(".toast")?.remove();const el=document.createElement("div");el.className="toast";el.textContent=message;document.body.appendChild(el);setTimeout(()=>el.remove(),2200)}
-function save(){localStorage.setItem("unmindy-editorial-v1",JSON.stringify(data));renderHistory()}
+function save(){localStorage.setItem("unmindy-editorial-v2",JSON.stringify(data));renderHistory()}
 function switchView(name){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===name));document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="explore")renderActivities();if(name==="progress")renderHistory();window.scrollTo({top:0,behavior:"smooth"})}
-function setIdea(activity,kicker){current=activity;$("checkin").style.display="none";$("answer").classList.add("show");$("answer-kicker").textContent=kicker||"A SMALL IDEA";$("answer-title").textContent=activity.title;$("answer-desc").textContent=activity.desc;$("answer-note").textContent=(suggestions[feeling]?.note)||"Try it for a few minutes. If it doesn't fit, choose something else.";$("begin").textContent="Give it "+activity.mins+" minutes ↗";resetTimer()}
-function chooseFeeling(key){feeling=key;const group=suggestions[key];const pool=group.ids.map(id=>activities.find(a=>a.id===id));setIdea(pool[Math.floor(Math.random()*pool.length)],group.title);window.scrollTo({top:0,behavior:"smooth"})}
+function setIdea(activity,kicker){current=activity;$("answer").classList.add("show");$("answer-kicker").textContent=kicker||"YOUR NEXT SMALL THING";$("answer-title").textContent=activity.title;$("answer-desc").textContent=activity.desc;$("answer-note").textContent=(suggestions[feeling]&&suggestions[feeling].note)||"Give it a few minutes. If it doesn't fit, choose something else."; $("begin").textContent="Start for "+activity.mins+" minutes ↗";resetTimer();$("timer").classList.remove("show")}
+function chooseFeeling(key){feeling=key;const group=suggestions[key];const pool=group.ids.map(id=>activities.find(a=>a.id===id));$("answer").scrollIntoView({behavior:"smooth",block:"nearest"});setIdea(pool[Math.floor(Math.random()*pool.length)],group.title);$("checkin").style.display="none";$("answer").scrollIntoView({behavior:"smooth",block:"nearest"})}
 function anotherIdea(){let pool=feeling?suggestions[feeling].ids.map(id=>activities.find(a=>a.id===id)):activities.filter(a=>a.cat===current?.cat);pool=pool.filter(a=>a.id!==current?.id);if(!pool.length)pool=activities.filter(a=>a.id!==current?.id);setIdea(pool[Math.floor(Math.random()*pool.length)],feeling?suggestions[feeling].title:categoryNames[current.cat])}
-function backToChoices(){clearInterval(interval);interval=null;running=false;$("timer").classList.remove("show");$("answer").classList.remove("show");$("checkin").style.display="block";current=null;feeling=null;window.scrollTo({top:0,behavior:"smooth"})}
-function beginActivity(){if(!current)return;$("timer").classList.add("show");remaining=current.mins*60;$("clock").textContent=format(remaining);$("timer-label").textContent="YOUR "+current.mins+" MINUTES";$("timer-toggle").textContent="Start timer";$("timer").scrollIntoView({behavior:"smooth",block:"center"})}
+function backToChoices(){clearInterval(interval);interval=null;running=false;elapsed=0;$("timer").classList.remove("show");$("answer").classList.remove("show");$("checkin").style.display="block";current=null;feeling=null;window.scrollTo({top:0,behavior:"smooth"})}
+function beginActivity(){if(!current)return;remaining=current.mins*60;elapsed=0;$("timer").classList.add("show");$("clock").textContent=format(remaining);$("timer-label").textContent="TIME FOR YOU";$("timer-toggle").textContent="Pause";deadline=Date.now()+remaining*1000;startedAt=Date.now();running=true;clearInterval(interval);interval=setInterval(tick,250);$("timer").scrollIntoView({behavior:"smooth",block:"center"})}
 function format(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
-function resetTimer(){clearInterval(interval);interval=null;running=false;remaining=(current?.mins||3)*60;$("clock").textContent=format(remaining);$("timer-toggle").textContent="Start timer"}
-function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));$("clock").textContent=format(remaining);if(!remaining){clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Start again";toast("Time's up. Continue or stop whenever you want.")}}
-function toggleTimer(){if(running){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Resume"}else{if(remaining<=0)remaining=(current?.mins||3)*60;deadline=Date.now()+remaining*1000;running=true;$("timer-toggle").textContent="Pause";interval=setInterval(tick,250)}}
-function complete(){if(!current)return;clearInterval(interval);interval=null;running=false;data.done++;data.minutes+=current.mins;data.history=(data.history||[]).concat([{title:current.title,mins:current.mins,date:new Date().toISOString()}]).slice(-50);save();backToChoices();toast("Added to your history.");}
+function resetTimer(){clearInterval(interval);interval=null;running=false;elapsed=0;remaining=(current&&current.mins||3)*60;$("clock").textContent=format(remaining);$("timer-toggle").textContent="Start"}
+function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));$("clock").textContent=format(remaining);if(!remaining){clearInterval(interval);interval=null;running=false;elapsed=current?current.mins*60:0;$("timer-toggle").textContent="Time's up";toast("Time's up. Keep going or stop whenever you want.")}}
+function toggleTimer(){if(running){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));elapsed=Math.max(0,(current?current.mins*60:180)-remaining);clearInterval(interval);interval=null;running=false;$("timer-toggle").textContent="Resume"}else{if(remaining<=0){remaining=(current&&current.mins||3)*60;elapsed=0}deadline=Date.now()+remaining*1000;running=true;$("timer-toggle").textContent="Pause";interval=setInterval(tick,250)}}
+function complete(){if(!current)return;clearInterval(interval);interval=null;running=false;const spent= Math.max(1,Math.min(current.mins,Math.round((current.mins*60-Math.max(0,remaining))/60)));data.done=(data.done||0)+1;data.minutes=(data.minutes||0)+spent;data.history=(data.history||[]).concat([{title:current.title,mins:spent,date:new Date().toISOString()}]).slice(-50);save();backToChoices();toast("Saved. Nice job showing up for yourself.");}
 function renderFilters(){const all=Object.entries(categoryNames);$("filters").innerHTML=all.map(([key,label])=>'<button class="'+(filter===key?"active":"")+'" data-filter="'+key+'">'+label+'</button>').join("");$("filters").querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;renderActivities()})}
-function renderActivities(){renderFilters();const list=filter==="all"?activities:activities.filter(a=>a.cat===filter);$("activity-list").innerHTML=list.map(a=>'<article class="activity"><div class="activity-top"><span class="activity-symbol">'+a.symbol+'</span><div><h3>'+a.title+'</h3><p>'+a.desc+'</p></div></div><div class="activity-bottom"><span class="duration">About '+a.mins+' min</span><button data-use="'+a.id+'">Choose this ↗</button></div></article>').join("");$("activity-list").querySelectorAll("[data-use]").forEach(b=>b.onclick=()=>{feeling=null;setIdea(activities.find(a=>a.id===Number(b.dataset.use)),"YOUR PICK");switchView("home");$("checkin").style.display="none";$("answer").classList.add("show")})}
-function renderHistory(){$("stat-done").textContent=data.done||0;$("stat-minutes").textContent=data.minutes||0;const history=(data.history||[]).slice().reverse().slice(0,8);$("history").innerHTML=history.length?history.map(h=>'<div class="history-row"><span>'+escapeHtml(h.title)+'</span><span>'+h.mins+' min</span></div>').join():'<div class="empty">Nothing here yet. When you finish an activity, tap “I’m done” and it will appear here.</div>'}
+function renderActivities(){renderFilters();const list=filter==="all"?activities:activities.filter(a=>a.cat===filter);$("activity-list").innerHTML=list.map(a=>'<article class="activity"><div class="activity-icon">'+a.symbol+'</div><div><h3>'+a.title+'</h3><p>'+a.desc+'</p><div class="activity-bottom"><span class="duration">'+a.mins+' min · no setup</span><button data-use="'+a.id+'">Let's do it →</button></div></div></article>').join("");$("activity-list").querySelectorAll("[data-use]").forEach(b=>b.onclick=()=>{feeling=null;switchView("home");$("checkin").style.display="none";setIdea(activities.find(a=>a.id===Number(b.dataset.use)),"YOUR PICK");$("answer").scrollIntoView({behavior:"smooth",block:"start"})})}
+function renderHistory(){$("stat-done").textContent=data.done||0;$("stat-minutes").textContent=data.minutes||0;const history=(data.history||[]).slice().reverse().slice(0,8);$("history").innerHTML=history.length?history.map(h=>'<div class="history-row"><span>'+escapeHtml(h.title)+'</span><span>'+h.mins+' min</span></div>').join(""):'<div class="empty">Your first finished activity will show up here. No streak to keep alive. No pressure.</div>'}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 document.querySelectorAll("[data-feel]").forEach(b=>b.addEventListener("click",()=>chooseFeeling(b.dataset.feel)));
 document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.cat;switchView("explore")}));
 document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
-$("all-ideas").addEventListener("click",()=>switchView("explore"));$("back").addEventListener("click",backToChoices);$("another").addEventListener("click",anotherIdea);$("begin").addEventListener("click",beginActivity);$("timer-toggle").addEventListener("click",toggleTimer);$("timer-reset").addEventListener("click",resetTimer);$("finish").addEventListener("click",complete);$("close-timer").addEventListener("click",()=>$("timer").classList.remove("show"));
+$("all-ideas").addEventListener("click",()=>switchView("explore"));$("back").addEventListener("click",backToChoices);$("another").addEventListener("click",anotherIdea);$("begin").addEventListener("click",beginActivity);$("timer-toggle").addEventListener("click",toggleTimer);$("timer-reset").addEventListener("click",()=>{remaining=(current&&current.mins||3)*60;elapsed=0;clearInterval(interval);interval=null;running=false;toggleTimer();$("timer-toggle").textContent="Pause";toast("Timer restarted.")});$("finish").addEventListener("click",complete);$("close-timer").addEventListener("click",()=>$("timer").classList.remove("show"));
 $("reset-data").addEventListener("click",()=>{if(confirm("Clear your activity history on this device?")){data={done:0,minutes:0,history:[]};save();toast("History cleared.")}});
 renderActivities();renderHistory();
 </script>
