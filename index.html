@@ -158,6 +158,31 @@ a{color:inherit}
 .dialog-actions button{min-height:44px;padding:10px 14px;border-radius:7px;font-size:13px;font-weight:800}
 .dialog-cancel{background:transparent;border:1px solid var(--line)}
 .dialog-confirm{background:#963e31;border:1px solid #963e31;color:#fff}
+
+/* Subtle UNMINDY green accents — keep the original layout, sharpen the details */
+:root{--accent-green:#315b3d;--accent-lime:#d9ed9b;--accent-wash:#e8eee2}
+.nav-button.active{background:var(--accent-wash);color:var(--accent-green);box-shadow:inset 0 -2px 0 var(--accent-green)}
+.install-button{border-color:#b9c8b4;background:#fbfcf7;color:var(--accent-green)}
+.install-button:hover{background:var(--accent-wash);border-color:var(--accent-green)}
+.button-primary{background:var(--accent-green);border-color:var(--accent-green);color:#fff}
+.button-primary:hover{background:#24472f;border-color:#24472f;transform:translateY(-1px)}
+.button-quiet:hover,.text-button:hover,.link-button:hover{color:var(--accent-green);border-color:#9eb49a}
+.mood:hover{border-color:#a9bba4;box-shadow:0 3px 0 #dce6d6}
+.mood:focus-visible,.nav-button:focus-visible,.button-primary:focus-visible,.button-quiet:focus-visible,.install-button:focus-visible{outline:3px solid #a6c78f;outline-offset:3px}
+.mood-icon{background:#e5ecdf;color:var(--accent-green)}
+.mood:nth-child(2) .mood-icon{background:#e6eee1;color:var(--accent-green)}
+.mood:nth-child(3) .mood-icon{background:#edf1d7;color:var(--accent-green)}
+.mood:nth-child(4) .mood-icon{background:#e2eadb;color:var(--accent-green)}
+.teaser-icon,.activity-icon{background:#e5ecdf;color:var(--accent-green);border-color:#d1ddca}
+.teaser:hover,.activity:hover{border-color:#a7b9a1;box-shadow:0 3px 0 #e0e8dc}
+.filters button.active{background:var(--accent-wash);border-color:#9db29a;color:var(--accent-green)}
+.activity-bottom button{background:var(--accent-green);border-color:var(--accent-green);color:#fff}
+.activity-bottom button:hover{background:#24472f}
+.mobile-nav button.active{color:var(--accent-green)}
+.mobile-nav button.active span{color:var(--accent-green)}
+.timer-progress span{background:var(--accent-green)}
+.dialog-confirm{background:var(--accent-green);border-color:var(--accent-green)}
+
 </style>
 </head>
 <body>
