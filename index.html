@@ -208,6 +208,46 @@ body{font-family:var(--type-body);letter-spacing:-.18px;font-size:16px;line-heig
  .section-head h2,.teaser-head h2{letter-spacing:-.045em}
 }
 
+
+/* Motion: small, tactile moments — never constant noise */
+@keyframes rise-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float-art{0%,100%{transform:translateY(0) rotate(4deg)}50%{transform:translateY(-6px) rotate(2.5deg)}}
+@keyframes orbit-turn{from{transform:rotate(-27deg)}to{transform:rotate(333deg)}}
+@keyframes soft-pop{0%{transform:scale(.97);opacity:.65}100%{transform:scale(1);opacity:1}}
+.hero-copy,.eyebrow,.hero h1{animation:rise-in .55s both}
+.hero-copy{animation-delay:.08s}
+.hero-art{animation:rise-in .65s .12s both}
+.art-card{animation:float-art 7s ease-in-out 1s infinite}
+.art-orbit{animation:orbit-turn 32s linear infinite}
+.art-figure{transition:transform .35s cubic-bezier(.2,.75,.25,1)}
+.hero-art:hover .art-figure{transform:rotate(3deg) scale(1.045)}
+.mood{transition:transform .2s cubic-bezier(.2,.75,.25,1),border-color .2s,box-shadow .2s,background-color .2s}
+.mood:active,.teaser:active,.activity-bottom button:active{transform:scale(.985)}
+.mood-grid .mood{animation:rise-in .42s both}
+.mood-grid .mood:nth-child(2){animation-delay:.05s}
+.mood-grid .mood:nth-child(3){animation-delay:.1s}
+.mood-grid .mood:nth-child(4){animation-delay:.15s}
+.button-primary,.button-quiet,.nav-button,.link-button,.filters button,.install-button,.activity-bottom button,.teaser{transition:transform .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease}
+.button-primary:hover,.install-button:hover{transform:translateY(-2px);box-shadow:0 5px 0 #1e2b2412}
+.button-primary:active,.button-quiet:active,.nav-button:active,.link-button:active,.filters button:active,.install-button:active{transform:translateY(1px)}
+.nav-button.active{transition:background-color .2s,color .2s}
+.teaser:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.teaser-icon{transition:transform .25s ease,background-color .25s ease}
+.teaser:hover .teaser-icon{transform:rotate(-5deg) scale(1.06);background:var(--sage)}
+.activity{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.activity:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.activity-icon{transition:transform .25s ease}
+.activity:hover .activity-icon{transform:rotate(-6deg) scale(1.06)}
+.recommendation.show{animation:rise-in .32s ease both}
+.recommendation.show .rec-symbol{animation:soft-pop .4s .1s both}
+.timer-panel.show{animation:rise-in .28s ease both}
+.history-row{animation:rise-in .3s both}
+button:focus-visible{transition:outline-offset .15s ease}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
 </style>
 </head>
 <body>
