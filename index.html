@@ -335,6 +335,7 @@ curious:{ids:[5,6,12,1,11],title:"Follow the thing you're curious about.",note:"
 scroll:{ids:[7,11,13,4],title:"Give yourself a moment to choose.",note:"You don't have to quit your phone forever. Just make the next few minutes intentional."}
 };
 const $=id=>document.getElementById(id);
+function trackEvent(name){try{if(typeof window.va==="function")window.va("event",{name})}catch(e){/* analytics must never block app interactions */}}
 let store={history:[]},current=null,feeling=null,filter="all",search="",remaining=180,totalSeconds=180,deadline=0,interval=null,running=false,installPrompt=null;
 try{const raw=localStorage.getItem("unmindy-fieldnotes-v3")||localStorage.getItem("unmindy-editorial-v2")||localStorage.getItem("unmindy-editorial-v1")||localStorage.getItem("unmindy-simple-v1");if(raw){const parsed=JSON.parse(raw);store={history:Array.isArray(parsed.history)?parsed.history:[],done:Number(parsed.done)||0,minutes:Number(parsed.minutes)||0}}}catch(e){store={history:[]}}
 function save(){try{store.done=store.history.length;store.minutes=store.history.reduce((sum,item)=>sum+(Number(item.mins)||0),0);localStorage.setItem("unmindy-fieldnotes-v3",JSON.stringify(store))}catch(e){toast("Couldn't save locally. Check your browser storage settings.")}renderHistory()}
